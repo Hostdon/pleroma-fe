@@ -1,7 +1,7 @@
 import { each, map, concat, last } from 'lodash'
 import { parseStatus, parseUser, parseNotification, parseAttachment } from '../entity_normalizer/entity_normalizer.service.js'
 import 'whatwg-fetch'
-import { StatusCodeError } from '../errors/errors'
+import { RegistrationError, StatusCodeError } from '../errors/errors'
 
 /* eslint-env browser */
 const EXTERNAL_PROFILE_URL = '/api/externalprofile/show.json'
@@ -55,6 +55,8 @@ const MASTODON_BLOCK_USER_URL = id => `/api/v1/accounts/${id}/block`
 const MASTODON_UNBLOCK_USER_URL = id => `/api/v1/accounts/${id}/unblock`
 const MASTODON_MUTE_USER_URL = id => `/api/v1/accounts/${id}/mute`
 const MASTODON_UNMUTE_USER_URL = id => `/api/v1/accounts/${id}/unmute`
+const MASTODON_SUBSCRIBE_USER = id => `/api/v1/pleroma/accounts/${id}/subscribe`
+const MASTODON_UNSUBSCRIBE_USER = id => `/api/v1/pleroma/accounts/${id}/unsubscribe`
 const MASTODON_POST_STATUS_URL = '/api/v1/statuses'
 const MASTODON_MEDIA_UPLOAD_URL = '/api/v1/media'
 const MASTODON_VOTE_URL = id => `/api/v1/polls/${id}/votes`
@@ -65,6 +67,7 @@ const MASTODON_PROFILE_UPDATE_URL = '/api/v1/accounts/update_credentials'
 const MASTODON_REPORT_USER_URL = '/api/v1/reports'
 const MASTODON_PIN_OWN_STATUS = id => `/api/v1/statuses/${id}/pin`
 const MASTODON_UNPIN_OWN_STATUS = id => `/api/v1/statuses/${id}/unpin`
+const MASTODON_SEARCH_2 = `/api/v2/search`
 const MASTODON_USER_SEARCH_URL = '/api/v1/accounts/search'
 
 const oldfetch = window.fetch
@@ -196,12 +199,11 @@ const register = ({ params, credentials }) => {
       ...rest
     })
   })
-    .then((response) => [response.ok, response])
-    .then(([ok, response]) => {
-      if (ok) {
+    .then((response) => {
+      if (response.ok) {
         return response.json()
       } else {
-        return response.json().then((error) => { throw new Error(error) })
+        return response.json().then((error) => { throw new RegistrationError(error) })
       }
     })
 }
@@ -752,6 +754,14 @@ const unmuteUser = ({ id, credentials }) => {
   return promisedRequest({ url: MASTODON_UNMUTE_USER_URL(id), credentials, method: 'POST' })
 }
 
+const subscribeUser = ({ id, credentials }) => {
+  return promisedRequest({ url: MASTODON_SUBSCRIBE_USER(id), credentials, method: 'POST' })
+}
+
+const unsubscribeUser = ({ id, credentials }) => {
+  return promisedRequest({ url: MASTODON_UNSUBSCRIBE_USER(id), credentials, method: 'POST' })
+}
+
 const fetchBlocks = ({ credentials }) => {
   return promisedRequest({ url: MASTODON_USER_BLOCKS_URL, credentials })
     .then((users) => users.map(parseUser))
@@ -855,6 +865,48 @@ const searchUsers = ({ credentials, query }) => {
     .then((data) => data.map(parseUser))
 }
 
+const search2 = ({ credentials, q, resolve, limit, offset, following }) => {
+  let url = MASTODON_SEARCH_2
+  let params = []
+
+  if (q) {
+    params.push(['q', encodeURIComponent(q)])
+  }
+
+  if (resolve) {
+    params.push(['resolve', resolve])
+  }
+
+  if (limit) {
+    params.push(['limit', limit])
+  }
+
+  if (offset) {
+    params.push(['offset', offset])
+  }
+
+  if (following) {
+    params.push(['following', true])
+  }
+
+  let queryString = map(params, (param) => `${param[0]}=${param[1]}`).join('&')
+  url += `?${queryString}`
+
+  return fetch(url, { headers: authHeaders(credentials) })
+    .then((data) => {
+      if (data.ok) {
+        return data
+      }
+      throw new Error('Error fetching search result', data)
+    })
+    .then((data) => { return data.json() })
+    .then((data) => {
+      data.accounts = data.accounts.slice(0, limit).map(u => parseUser(u))
+      data.statuses = data.statuses.slice(0, limit).map(s => parseStatus(s))
+      return data
+    })
+}
+
 const apiService = {
   verifyCredentials,
   fetchTimeline,
@@ -882,6 +934,8 @@ const apiService = {
   fetchMutes,
   muteUser,
   unmuteUser,
+  subscribeUser,
+  unsubscribeUser,
   fetchBlocks,
   fetchOAuthTokens,
   revokeOAuthToken,
@@ -918,6 +972,7 @@ const apiService = {
   fetchRebloggedByUsers,
   reportUser,
   updateNotificationSettings,
+  search2,
   searchUsers
 }
 

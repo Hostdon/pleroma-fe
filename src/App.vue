@@ -38,9 +38,10 @@
           </router-link>
         </div>
         <div class="item right">
-          <user-finder
-            class="button-icon nav-icon mobile-hidden"
-            @toggled="onFinderToggled"
+          <search-bar
+            class="nav-icon mobile-hidden"
+            @toggled="onSearchBarToggled"
+            @click.stop.native
           />
           <router-link
             class="mobile-hidden"

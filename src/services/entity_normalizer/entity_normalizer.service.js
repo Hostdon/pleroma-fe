@@ -68,6 +68,7 @@ export const parseUser = (data) => {
         output.following = relationship.following
         output.statusnet_blocking = relationship.blocking
         output.muted = relationship.muting
+        output.subscribed = relationship.subscribing
       }
 
       output.hide_follows = data.pleroma.hide_follows
@@ -151,7 +152,7 @@ export const parseUser = (data) => {
   output.statuses_count = data.statuses_count
   output.friendIds = []
   output.followerIds = []
-  output.pinnedStatuseIds = []
+  output.pinnedStatusIds = []
 
   if (data.pleroma) {
     output.follow_request_count = data.pleroma.follow_request_count

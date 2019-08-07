@@ -78,6 +78,7 @@
     "timeline": "Timeline",
     "twkn": "The Whole Known Network",
     "user_search": "User Search",
+    "search": "Search",
     "who_to_follow": "Who to follow",
     "preferences": "Preferences"
   },
@@ -104,6 +105,9 @@
     "expires_in": "Poll ends in {0}",
     "expired": "Poll ended {0} ago",
     "not_enough_options": "Too few unique options in poll"
+  },
+  "stickers": {
+    "add_sticker": "Add Sticker"
   },
   "interactions": {
     "favs_repeats": "Repeats and Favorites",
@@ -529,6 +533,8 @@
     "remote_follow": "Remote follow",
     "report": "Report",
     "statuses": "Statuses",
+    "subscribe": "Subscribe",
+    "unsubscribe": "Unsubscribe",
     "unblock": "Unblock",
     "unblock_progress": "Unblocking...",
     "block_progress": "Blocking...",
@@ -593,5 +599,12 @@
       "GiB": "GiB",
       "TiB": "TiB"
     }
+  },
+  "search": {
+    "people": "People",
+    "hashtags": "Hashtags",
+    "person_talking": "{count} person talking",
+    "people_talking": "{count} people talking",
+    "no_results": "No results"
   }
 }
