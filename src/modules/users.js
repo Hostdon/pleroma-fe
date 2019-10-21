@@ -60,6 +60,18 @@ const unmuteUser = (store, id) => {
     .then((relationship) => store.commit('updateUserRelationship', [relationship]))
 }
 
+const hideReblogs = (store, userId) => {
+  return store.rootState.api.backendInteractor.followUser({ id: userId, reblogs: false })
+    .then((relationship) => {
+      store.commit('updateUserRelationship', [relationship])
+    })
+}
+
+const showReblogs = (store, userId) => {
+  return store.rootState.api.backendInteractor.followUser({ id: userId, reblogs: true })
+    .then((relationship) => store.commit('updateUserRelationship', [relationship]))
+}
+
 export const mutations = {
   setMuted (state, { user: { id }, muted }) {
     const user = state.usersObject[id]
@@ -135,6 +147,7 @@ export const mutations = {
         user.muted = relationship.muting
         user.statusnet_blocking = relationship.blocking
         user.subscribed = relationship.subscribing
+        user.showing_reblogs = relationship.showing_reblogs
       }
     })
   },
@@ -164,7 +177,7 @@ export const mutations = {
       state.currentUser.muteIds.push(muteId)
     }
   },
-  setPinned (state, status) {
+  setPinnedToUser (state, status) {
     const user = state.usersObject[status.user.id]
     const index = user.pinnedStatusIds.indexOf(status.id)
     if (status.pinned && index === -1) {
@@ -272,6 +285,12 @@ const users = {
     unmuteUser (store, id) {
       return unmuteUser(store, id)
     },
+    hideReblogs (store, id) {
+      return hideReblogs(store, id)
+    },
+    showReblogs (store, id) {
+      return showReblogs(store, id)
+    },
     muteUsers (store, ids = []) {
       return Promise.all(ids.map(id => muteUser(store, id)))
     },
@@ -338,13 +357,13 @@ const users = {
         // Reconnect users to statuses
         store.commit('setUserForStatus', status)
         // Set pinned statuses to user
-        store.commit('setPinned', status)
+        store.commit('setPinnedToUser', status)
       })
       each(compact(map(statuses, 'retweeted_status')), (status) => {
         // Reconnect users to retweets
         store.commit('setUserForStatus', status)
         // Set pinned retweets to user
-        store.commit('setPinned', status)
+        store.commit('setPinnedToUser', status)
       })
     },
     addNewNotifications (store, { notifications }) {
@@ -410,7 +429,7 @@ const users = {
         })
         .then(() => {
           store.commit('clearCurrentUser')
-          store.dispatch('disconnectFromChat')
+          store.dispatch('disconnectFromSocket')
           store.commit('clearToken')
           store.dispatch('stopFetching', 'friends')
           store.commit('setBackendInteractor', backendInteractorService(store.getters.getToken()))

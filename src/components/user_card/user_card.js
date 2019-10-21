@@ -1,17 +1,19 @@
 import UserAvatar from '../user_avatar/user_avatar.vue'
 import RemoteFollow from '../remote_follow/remote_follow.vue'
 import ProgressButton from '../progress_button/progress_button.vue'
+import FollowButton from '../follow_button/follow_button.vue'
 import ModerationTools from '../moderation_tools/moderation_tools.vue'
+import AccountActions from '../account_actions/account_actions.vue'
 import { hex2rgb } from '../../services/color_convert/color_convert.js'
-import { requestFollow, requestUnfollow } from '../../services/follow_manipulate/follow_manipulate'
 import generateProfileLink from 'src/services/user_profile_link_generator/user_profile_link_generator'
 
 export default {
-  props: [ 'user', 'switcher', 'selected', 'hideBio', 'rounded', 'bordered', 'allowZoomingAvatar' ],
+  props: [
+    'user', 'switcher', 'selected', 'hideBio', 'rounded', 'bordered', 'allowZoomingAvatar'
+  ],
   data () {
     return {
       followRequestInProgress: false,
-      followRequestSent: false,
       hideUserStatsLocal: typeof this.$store.state.config.hideUserStats === 'undefined'
         ? this.$store.state.instance.hideUserStats
         : this.$store.state.config.hideUserStats,
@@ -38,19 +40,10 @@ export default {
         const rgb = (typeof color === 'string') ? hex2rgb(color) : color
         const tintColor = `rgba(${Math.floor(rgb.r)}, ${Math.floor(rgb.g)}, ${Math.floor(rgb.b)}, .5)`
 
-        const gradient = [
-          [tintColor, this.hideBio ? '60%' : ''],
-          this.hideBio ? [
-            color, '100%'
-          ] : [
-            tintColor, ''
-          ]
-        ].map(_ => _.join(' ')).join(', ')
-
         return {
           backgroundColor: `rgb(${Math.floor(rgb.r * 0.53)}, ${Math.floor(rgb.g * 0.56)}, ${Math.floor(rgb.b * 0.59)})`,
           backgroundImage: [
-            `linear-gradient(to bottom, ${gradient})`,
+            `linear-gradient(to bottom, ${tintColor}, ${tintColor})`,
             `url(${this.user.cover_photo})`
           ].join(', ')
         }
@@ -106,31 +99,11 @@ export default {
     UserAvatar,
     RemoteFollow,
     ModerationTools,
-    ProgressButton
+    AccountActions,
+    ProgressButton,
+    FollowButton
   },
   methods: {
-    followUser () {
-      const store = this.$store
-      this.followRequestInProgress = true
-      requestFollow(this.user, store).then(({ sent }) => {
-        this.followRequestInProgress = false
-        this.followRequestSent = sent
-      })
-    },
-    unfollowUser () {
-      const store = this.$store
-      this.followRequestInProgress = true
-      requestUnfollow(this.user, store).then(() => {
-        this.followRequestInProgress = false
-        store.commit('removeStatus', { timeline: 'friends', userId: this.user.id })
-      })
-    },
-    blockUser () {
-      this.$store.dispatch('blockUser', this.user.id)
-    },
-    unblockUser () {
-      this.$store.dispatch('unblockUser', this.user.id)
-    },
     muteUser () {
       this.$store.dispatch('muteUser', this.user.id)
     },
@@ -158,10 +131,10 @@ export default {
       }
     },
     userProfileLink (user) {
-      return generateProfileLink(user.id, user.screen_name, this.$store.state.instance.restrictedNicknames)
-    },
-    reportUser () {
-      this.$store.dispatch('openUserReportingModal', this.user.id)
+      return generateProfileLink(
+        user.id, user.screen_name,
+        this.$store.state.instance.restrictedNicknames
+      )
     },
     zoomAvatar () {
       const attachment = {

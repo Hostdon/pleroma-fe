@@ -8,9 +8,10 @@ import WhoToFollowPanel from './components/who_to_follow_panel/who_to_follow_pan
 import ChatPanel from './components/chat_panel/chat_panel.vue'
 import MediaModal from './components/media_modal/media_modal.vue'
 import SideDrawer from './components/side_drawer/side_drawer.vue'
-import MobilePostStatusModal from './components/mobile_post_status_modal/mobile_post_status_modal.vue'
+import MobilePostStatusButton from './components/mobile_post_status_button/mobile_post_status_button.vue'
 import MobileNav from './components/mobile_nav/mobile_nav.vue'
 import UserReportingModal from './components/user_reporting_modal/user_reporting_modal.vue'
+import PostStatusModal from './components/post_status_modal/post_status_modal.vue'
 import { windowWidth } from './services/window_utils/window_utils'
 
 export default {
@@ -26,9 +27,10 @@ export default {
     ChatPanel,
     MediaModal,
     SideDrawer,
-    MobilePostStatusModal,
+    MobilePostStatusButton,
     MobileNav,
-    UserReportingModal
+    UserReportingModal,
+    PostStatusModal
   },
   data: () => ({
     mobileActivePanel: 'timeline',
@@ -89,7 +91,11 @@ export default {
     sitename () { return this.$store.state.instance.name },
     chat () { return this.$store.state.chat.channel.state === 'joined' },
     suggestionsEnabled () { return this.$store.state.instance.suggestionsEnabled },
-    showInstanceSpecificPanel () { return this.$store.state.instance.showInstanceSpecificPanel },
+    showInstanceSpecificPanel () {
+      return this.$store.state.instance.showInstanceSpecificPanel &&
+        !this.$store.state.config.hideISP &&
+        this.$store.state.instance.instanceSpecificPanelContent
+    },
     showFeaturesPanel () { return this.$store.state.instance.showFeaturesPanel },
     isMobileLayout () { return this.$store.state.interface.mobileLayout }
   },

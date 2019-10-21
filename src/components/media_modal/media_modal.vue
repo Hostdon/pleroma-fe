@@ -1,6 +1,7 @@
 <template>
   <div
     v-if="showing"
+    v-body-scroll-lock="showing"
     class="modal-view media-modal-view"
     @click.prevent="hide"
   >
@@ -43,6 +44,10 @@
 .media-modal-view {
   z-index: 1001;
 
+  body:not(.scroll-locked) & {
+    display: none;
+  }
+
   &:hover {
     .modal-view-button-arrow {
       opacity: 0.75;
@@ -63,6 +68,7 @@
   max-width: 90%;
   max-height: 90%;
   box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.5);
+  image-orientation: from-image; // NOTE: only FF supports this
 }
 
 .modal-view-button-arrow {

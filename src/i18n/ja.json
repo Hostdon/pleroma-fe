@@ -76,8 +76,14 @@
     "dms": "ダイレクトメッセージ",
     "public_tl": "パブリックタイムライン",
     "timeline": "タイムライン",
+<<<<<<< HEAD
     "twkn": "接続しているすべてのネットワーク",
     "user_search": "ユーザーを探す",
+=======
+    "twkn": "つながっているすべてのネットワーク",
+    "user_search": "ユーザーをさがす",
+    "search": "さがす",
+>>>>>>> 051e6ea5ca8be5231d66e577a7e5407b53e08f61
     "who_to_follow": "おすすめユーザー",
     "preferences": "設定"
   },
@@ -104,6 +110,18 @@
     "expires_in": "投票は {0} で終了します",
     "expired": "投票は {0} 前に終了しました",
     "not_enough_options": "相異なる選択肢が不足しています"
+  },
+  "emoji": {
+    "stickers": "ステッカー",
+    "emoji": "えもじ",
+    "keep_open": "ピッカーをあけたままにする",
+    "search_emoji": "えもじをさがす",
+    "add_emoji": "えもじをうちこむ",
+    "custom": "カスタムえもじ",
+    "unicode": "ユニコードえもじ"
+  },
+  "stickers": {
+    "add_sticker": "ステッカーをふやす"
   },
   "interactions": {
     "favs_repeats": "リピートとお気に入り",
@@ -217,6 +235,7 @@
     "current_password": "現在のパスワード",
     "current_profile_banner": "現在のプロフィールバナー",
     "data_import_export_tab": "インポートとエクスポート",
+<<<<<<< HEAD
     "default_vis": "デフォルトの公開範囲",
     "delete_account": "アカウントを消す",
     "delete_account_description": "あなたのアカウントとメッセージが、消えます。",
@@ -224,6 +243,17 @@
     "delete_account_instructions": "本当にアカウントを消してもいいなら、パスワードを入力してください。",
     "avatar_size_instruction": "アバターの大きさは、150×150ピクセルか、それよりも大きくするといいです。",
     "export_theme": "保存",
+=======
+    "default_vis": "デフォルトのこうかいはんい",
+    "delete_account": "アカウントをけす",
+    "delete_account_description": "あなたのアカウントとメッセージが、きえます。",
+    "delete_account_error": "アカウントをけすことが、できなかったかもしれません。インスタンスのアドミニストレーターに、おといあわせください。",
+    "delete_account_instructions": "ほんとうにアカウントをけしてもいいなら、パスワードをかいてください。",
+    "discoverable": "けんさくなどのサービスで、このアカウントをみつけてもよい",
+    "avatar_size_instruction": "アバターのおおきさは、150×150ピクセルか、それよりもおおきくするといいです。",
+    "pad_emoji": "えもじをピッカーでえらんだとき、えもじのまわりにスペースをいれる",
+    "export_theme": "セーブ",
+>>>>>>> 051e6ea5ca8be5231d66e577a7e5407b53e08f61
     "filtering": "フィルタリング",
     "filtering_explanation": "これらの言葉を含むすべてのものがミュートされます。1行に1つの言葉を書いてください。",
     "follow_export": "フォローのエクスポート",
@@ -270,6 +300,7 @@
     "notification_visibility_likes": "お気に入り",
     "notification_visibility_mentions": "メンション",
     "notification_visibility_repeats": "リピート",
+<<<<<<< HEAD
     "no_rich_text_description": "リッチテキストを使わない",
     "no_blocks": "ブロックはありません",
     "no_mutes": "ミュートはありません",
@@ -278,6 +309,18 @@
     "show_admin_badge": "管理者のバッジを見せる",
     "show_moderator_badge": "モデレーターのバッジを見せる",
     "nsfw_clickthrough": "NSFWなファイルを隠す",
+=======
+    "no_rich_text_description": "リッチテキストをつかわない",
+    "no_blocks": "ブロックしていません",
+    "no_mutes": "ミュートしていません",
+    "hide_follows_description": "フォローしているひとをみせない",
+    "hide_followers_description": "フォロワーをみせない",
+    "hide_follows_count_description": "フォローしているひとのかずをみせない",
+    "hide_followers_count_description": "フォロワーのかずをみせない",
+    "show_admin_badge": "アドミンのしるしをみせる",
+    "show_moderator_badge": "モデレーターのしるしをみせる",
+    "nsfw_clickthrough": "NSFWなファイルをかくす",
+>>>>>>> 051e6ea5ca8be5231d66e577a7e5407b53e08f61
     "oauth_tokens": "OAuthトークン",
     "token": "トークン",
     "refresh_token": "トークンを更新",
@@ -500,6 +543,7 @@
   "status": {
     "favorites": "お気に入り",
     "repeats": "リピート",
+<<<<<<< HEAD
     "delete": "ステータスを削除",
     "pin": "プロフィールにピン留め",
     "unpin": "プロフィールのピン留めを外す",
@@ -507,6 +551,17 @@
     "delete_confirm": "本当にこのステータスを削除してもよろしいですか？",
     "reply_to": "返信",
     "replies_list": "返信:"
+=======
+    "delete": "ステータスをけす",
+    "pin": "プロフィールにピンどめする",
+    "unpin": "プロフィールにピンどめするのをやめる",
+    "pinned": "ピンどめ",
+    "delete_confirm": "ほんとうに、このステータスを、けしてもいいですか？",
+    "reply_to": "へんしん:",
+    "replies_list": "へんしん:",
+    "mute_conversation": "スレッドをミュートする",
+    "unmute_conversation": "スレッドをミュートするのをやめる"
+>>>>>>> 051e6ea5ca8be5231d66e577a7e5407b53e08f61
   },
   "user_card": {
     "approve": "受け入れ",
@@ -525,13 +580,16 @@
     "follows_you": "フォローされました！",
     "its_you": "これはあなたです！",
     "media": "メディア",
+    "mention": "メンション",
     "mute": "ミュート",
     "muted": "ミュートしています！",
     "per_day": "/日",
     "remote_follow": "リモートフォロー",
     "report": "通報",
     "statuses": "ステータス",
-    "unblock": "ブロック解除",
+    "subscribe": "サブスクライブ",
+    "unsubscribe": "サブスクライブをやめる",
+    "unblock": "ブロックを解除",
     "unblock_progress": "ブロックを解除しています...",
     "block_progress": "ブロックしています...",
     "unmute": "ミュート解除",
@@ -595,5 +653,23 @@
       "GiB": "GiB",
       "TiB": "TiB"
     }
+  },
+  "search": {
+    "people": "ひとびと",
+    "hashtags": "ハッシュタグ",
+    "person_talking": "{count} にんが、はなしています",
+    "people_talking": "{count} にんが、はなしています",
+    "no_results": "みつかりませんでした"
+  },
+  "password_reset": {
+    "forgot_password": "パスワードを、わすれましたか？",
+    "password_reset": "パスワードリセット",
+    "instruction": "あなたのメールアドレスかユーザーめいをいれてください。パスワードをリセットするためのリンクをおくります。",
+    "placeholder": "あなたのメールアドレスかユーザーめい",
+    "check_email": "パスワードをリセットするためのリンクがかかれたメールが、とどいているかどうか、みてください。",
+    "return_home": "ホームページにもどる",
+    "not_found": "そのメールアドレスまたはユーザーめいを、みつけることができませんでした。",
+    "too_many_requests": "パスワードリセットを、ためすことが、おおすぎます。しばらくしてから、ためしてください。",
+    "password_reset_disabled": "このインスタンスでは、パスワードリセットは、できません。インスタンスのアドミニストレーターに、おといあわせください。"
   }
 }

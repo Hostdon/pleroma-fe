@@ -11,8 +11,8 @@ import BlockCard from '../block_card/block_card.vue'
 import MuteCard from '../mute_card/mute_card.vue'
 import SelectableList from '../selectable_list/selectable_list.vue'
 import ProgressButton from '../progress_button/progress_button.vue'
-import EmojiInput from '../emoji-input/emoji-input.vue'
-import suggestor from '../emoji-input/suggestor.js'
+import EmojiInput from '../emoji_input/emoji_input.vue'
+import suggestor from '../emoji_input/suggestor.js'
 import Autosuggest from '../autosuggest/autosuggest.vue'
 import Importer from '../importer/importer.vue'
 import Exporter from '../exporter/exporter.vue'
@@ -41,8 +41,11 @@ const UserSettings = {
       newDefaultScope: this.$store.state.users.currentUser.default_scope,
       hideFollows: this.$store.state.users.currentUser.hide_follows,
       hideFollowers: this.$store.state.users.currentUser.hide_followers,
+      hideFollowsCount: this.$store.state.users.currentUser.hide_follows_count,
+      hideFollowersCount: this.$store.state.users.currentUser.hide_followers_count,
       showRole: this.$store.state.users.currentUser.show_role,
       role: this.$store.state.users.currentUser.role,
+      discoverable: this.$store.state.users.currentUser.discoverable,
       pickAvatarBtnVisible: true,
       bannerUploading: false,
       backgroundUploading: false,
@@ -142,6 +145,9 @@ const UserSettings = {
             no_rich_text: this.newNoRichText,
             hide_follows: this.hideFollows,
             hide_followers: this.hideFollowers,
+            discoverable: this.discoverable,
+            hide_follows_count: this.hideFollowsCount,
+            hide_followers_count: this.hideFollowersCount,
             show_role: this.showRole
             /* eslint-enable camelcase */
           } }).then((user) => {

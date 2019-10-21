@@ -32,6 +32,7 @@
             <p>{{ $t('settings.name') }}</p>
             <EmojiInput
               v-model="newName"
+              enable-emoji-picker
               :suggest="emojiSuggestor"
             >
               <input
@@ -43,6 +44,7 @@
             <p>{{ $t('settings.bio') }}</p>
             <EmojiInput
               v-model="newBio"
+              enable-emoji-picker
               :suggest="emojiUserSuggestor"
             >
               <textarea
@@ -88,6 +90,15 @@
               >
               <label for="account-hide-follows">{{ $t('settings.hide_follows_description') }}</label>
             </p>
+            <p class="setting-subitem">
+              <input
+                id="account-hide-follows-count"
+                v-model="hideFollowsCount"
+                type="checkbox"
+                :disabled="!hideFollows"
+              >
+              <label for="account-hide-follows-count">{{ $t('settings.hide_follows_count_description') }}</label>
+            </p>
             <p>
               <input
                 id="account-hide-followers"
@@ -95,6 +106,15 @@
                 type="checkbox"
               >
               <label for="account-hide-followers">{{ $t('settings.hide_followers_description') }}</label>
+            </p>
+            <p class="setting-subitem">
+              <input
+                id="account-hide-followers-count"
+                v-model="hideFollowersCount"
+                type="checkbox"
+                :disabled="!hideFollowers"
+              >
+              <label for="account-hide-followers-count">{{ $t('settings.hide_followers_count_description') }}</label>
             </p>
             <p>
               <input
@@ -110,6 +130,14 @@
                 v-if="role === 'moderator'"
                 for="account-show-role"
               >{{ $t('settings.show_moderator_badge') }}</label>
+            </p>
+            <p>
+              <input
+                id="discoverable"
+                v-model="discoverable"
+                type="checkbox"
+              >
+              <label for="discoverable">{{ $t('settings.discoverable') }}</label>
             </p>
             <button
               :disabled="newName && newName.length === 0"
@@ -616,6 +644,10 @@
     button {
       width: 10em;
     }
+  }
+
+  .setting-subitem {
+    margin-left: 1.75em;
   }
 }
 </style>

@@ -10,13 +10,14 @@
   position: fixed;
   z-index: -1;
   height: 100%;
-  width: 100%;
+  left: 0;
+  right: -20px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0 50%;
 }
 
-i {
+i[class^='icon-'] {
   user-select: none;
 }
 
@@ -49,6 +50,10 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  &.hidden {
+    display: none;
+  }
 }
 
 a {
@@ -343,6 +348,7 @@ i[class*=icon-] {
   align-items: center;
   position: fixed;
   height: 50px;
+  box-sizing: border-box;
 
   .logo {
     display: flex;
@@ -382,6 +388,7 @@ i[class*=icon-] {
   }
 
   .inner-nav {
+    position: relative;
     margin: auto;
     box-sizing: border-box;
     padding-left: 10px;
@@ -549,23 +556,6 @@ nav {
   color: var(--faint, $fallback--faint);
   box-shadow: 0px 0px 4px rgba(0,0,0,.6);
   box-shadow: var(--topBarShadow);
-
-  .back-button {
-    display: block;
-    max-width: 99px;
-    transition-property: opacity, max-width;
-    transition-duration: 300ms;
-    transition-timing-function: ease-out;
-
-    i {
-      margin: 0 1em;
-    }
-
-    &.hidden {
-      opacity: 0;
-      max-width: 5px;
-    }
-  }
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -599,12 +589,6 @@ nav {
 @media all and (min-width: 800px) {
   body {
     overflow-y: scroll;
-  }
-
-  nav {
-    .back-button {
-      display: none;
-    }
   }
 
   .sidebar-bounds {

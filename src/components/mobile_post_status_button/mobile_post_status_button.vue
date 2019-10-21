@@ -1,23 +1,5 @@
 <template>
-  <div v-if="currentUser">
-    <div
-      v-show="postFormOpen"
-      class="post-form-modal-view modal-view"
-      @click="closePostForm"
-    >
-      <div
-        class="post-form-modal-panel panel"
-        @click.stop=""
-      >
-        <div class="panel-heading">
-          {{ $t('post_status.new_status') }}
-        </div>
-        <PostStatusForm
-          class="panel-body"
-          @posted="closePostForm"
-        />
-      </div>
-    </div>
+  <div v-if="isLoggedIn">
     <button
       class="new-status-button"
       :class="{ 'hidden': isHidden }"
@@ -28,21 +10,10 @@
   </div>
 </template>
 
-<script src="./mobile_post_status_modal.js"></script>
+<script src="./mobile_post_status_button.js"></script>
 
 <style lang="scss">
 @import '../../_variables.scss';
-
-.post-form-modal-view {
-  max-height: 100%;
-  display: block;
-}
-
-.post-form-modal-panel {
-  flex-shrink: 0;
-  margin: 25% 0 4em 0;
-  width: 100%;
-}
 
 .new-status-button {
   width: 5em;

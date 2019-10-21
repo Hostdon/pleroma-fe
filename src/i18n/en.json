@@ -68,6 +68,7 @@
   },
   "nav": {
     "about": "About",
+    "administration": "Administration",
     "back": "Back",
     "chat": "Local Chat",
     "friend_requests": "Follow Requests",
@@ -106,8 +107,14 @@
     "expired": "Poll ended {0} ago",
     "not_enough_options": "Too few unique options in poll"
   },
-  "stickers": {
-    "add_sticker": "Add Sticker"
+  "emoji": {
+    "stickers": "Stickers",
+    "emoji": "Emoji",
+    "keep_open": "Keep picker open",
+    "search_emoji": "Search for an emoji",
+    "add_emoji": "Insert emoji",
+    "custom": "Custom emoji",
+    "unicode": "Unicode emoji"
   },
   "interactions": {
     "favs_repeats": "Repeats and Favorites",
@@ -225,7 +232,9 @@
     "delete_account_description": "Permanently delete your account and all your messages.",
     "delete_account_error": "There was an issue deleting your account. If this persists please contact your instance administrator.",
     "delete_account_instructions": "Type your password in the input below to confirm account deletion.",
+    "discoverable": "Allow discovery of this account in search results and other services",
     "avatar_size_instruction": "The recommended minimum size for avatar images is 150x150 pixels.",
+    "pad_emoji": "Pad emoji with spaces when adding from picker",
     "export_theme": "Save preset",
     "filtering": "Filtering",
     "filtering_explanation": "All statuses containing these words will be muted, one per line",
@@ -262,7 +271,7 @@
     "loop_video": "Loop videos",
     "loop_video_silent_only": "Loop only videos without sound (i.e. Mastodon's \"gifs\")",
     "mutes_tab": "Mutes",
-    "play_videos_in_modal": "Play videos directly in the media viewer",
+    "play_videos_in_modal": "Play videos in a popup frame",
     "use_contain_fit": "Don't crop the attachment in thumbnails",
     "name": "Name",
     "name_bio": "Name & Bio",
@@ -277,6 +286,8 @@
     "no_mutes": "No mutes",
     "hide_follows_description": "Don't show who I'm following",
     "hide_followers_description": "Don't show who's following me",
+    "hide_follows_count_description": "Don't show follow count",
+    "hide_followers_count_description": "Don't show follower count",
     "show_admin_badge": "Show Admin badge in my profile",
     "show_moderator_badge": "Show Moderator badge in my profile",
     "nsfw_clickthrough": "Enable clickthrough NSFW attachment hiding",
@@ -508,7 +519,9 @@
     "pinned": "Pinned",
     "delete_confirm": "Do you really want to delete this status?",
     "reply_to": "Reply to",
-    "replies_list": "Replies:"
+    "replies_list": "Replies:",
+    "mute_conversation": "Mute conversation",
+    "unmute_conversation": "Unmute conversation"
   },
   "user_card": {
     "approve": "Approve",
@@ -527,6 +540,7 @@
     "follows_you": "Follows you!",
     "its_you": "It's you!",
     "media": "Media",
+    "mention": "Mention",
     "mute": "Mute",
     "muted": "Muted",
     "per_day": "per day",
@@ -541,6 +555,8 @@
     "unmute": "Unmute",
     "unmute_progress": "Unmuting...",
     "mute_progress": "Muting...",
+    "hide_repeats": "Hide repeats",
+    "show_repeats": "Show repeats",
     "admin_menu": {
       "moderation": "Moderation",
       "grant_admin": "Grant Admin",
@@ -606,5 +622,18 @@
     "person_talking": "{count} person talking",
     "people_talking": "{count} people talking",
     "no_results": "No results"
+  },
+  "password_reset": {
+    "forgot_password": "Forgot password?",
+    "password_reset": "Password reset",
+    "instruction": "Enter your email address or username. We will send you a link to reset your password.",
+    "placeholder": "Your email or username",
+    "check_email": "Check your email for a link to reset your password.",
+    "return_home": "Return to the home page",
+    "not_found": "We couldn't find that email or username.",
+    "too_many_requests": "You have reached the limit of attempts, try again later.",
+    "password_reset_disabled": "Password reset is disabled. Please contact your instance administrator.",
+    "password_reset_required": "You must reset your password to log in.",
+    "password_reset_required_but_mailer_is_disabled": "You must reset your password, but password reset is disabled. Please contact your instance administrator."
   }
 }

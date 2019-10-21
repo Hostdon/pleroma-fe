@@ -4,6 +4,7 @@
     :style="bgAppStyle"
   >
     <div
+      id="app_bg_wrapper"
       class="app-bg-wrapper"
       :style="bgStyle"
     />
@@ -14,20 +15,20 @@
       class="nav-bar container"
       @click="scrollToTop()"
     >
-      <div
-        class="logo"
-        :style="logoBgStyle"
-      >
-        <div
-          class="mask"
-          :style="logoMaskStyle"
-        />
-        <img
-          :src="logo"
-          :style="logoStyle"
-        >
-      </div>
       <div class="inner-nav">
+        <div
+          class="logo"
+          :style="logoBgStyle"
+        >
+          <div
+            class="mask"
+            :style="logoMaskStyle"
+          />
+          <img
+            :src="logo"
+            :style="logoStyle"
+          >
+        </div>
         <div class="item">
           <router-link
             class="site-name"
@@ -52,6 +53,15 @@
               :title="$t('nav.preferences')"
             />
           </router-link>
+          <a
+            v-if="currentUser && currentUser.role === 'admin'"
+            href="/pleroma/admin/#/login-pleroma"
+            class="mobile-hidden"
+            target="_blank"
+          ><i
+            class="button-icon icon-gauge nav-icon"
+            :title="$t('nav.administration')"
+          /></a>
           <a
             v-if="currentUser"
             href="#"
@@ -107,7 +117,9 @@
       :floating="true"
       class="floating-chat mobile-hidden"
     />
+    <MobilePostStatusButton />
     <UserReportingModal />
+    <PostStatusModal />
     <portal-target name="modal" />
   </div>
 </template>

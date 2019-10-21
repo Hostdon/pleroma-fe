@@ -65,14 +65,18 @@ export const parseUser = (data) => {
 
       if (relationship) {
         output.follows_you = relationship.followed_by
+        output.requested = relationship.requested
         output.following = relationship.following
         output.statusnet_blocking = relationship.blocking
         output.muted = relationship.muting
+        output.showing_reblogs = relationship.showing_reblogs
         output.subscribed = relationship.subscribing
       }
 
       output.hide_follows = data.pleroma.hide_follows
       output.hide_followers = data.pleroma.hide_followers
+      output.hide_follows_count = data.pleroma.hide_follows_count
+      output.hide_followers_count = data.pleroma.hide_followers_count
 
       output.rights = {
         moderator: data.pleroma.is_moderator,
@@ -94,6 +98,7 @@ export const parseUser = (data) => {
       if (data.source.pleroma) {
         output.no_rich_text = data.source.pleroma.no_rich_text
         output.show_role = data.source.pleroma.show_role
+        output.discoverable = data.source.pleroma.discoverable
       }
     }
 
@@ -139,6 +144,8 @@ export const parseUser = (data) => {
     output.default_scope = data.default_scope
     output.hide_follows = data.hide_follows
     output.hide_followers = data.hide_followers
+    output.hide_follows_count = data.hide_follows_count
+    output.hide_followers_count = data.hide_followers_count
     output.background_image = data.background_image
     // on mastoapi this info is contained in a "relationship"
     output.following = data.following
@@ -190,9 +197,11 @@ export const parseAttachment = (data) => {
   return output
 }
 export const addEmojis = (string, emojis) => {
+  const matchOperatorsRegex = /[|\\{}()[\]^$+*?.-]/g
   return emojis.reduce((acc, emoji) => {
+    const regexSafeShortCode = emoji.shortcode.replace(matchOperatorsRegex, '\\$&')
     return acc.replace(
-      new RegExp(`:${emoji.shortcode}:`, 'g'),
+      new RegExp(`:${regexSafeShortCode}:`, 'g'),
       `<img src='${emoji.url}' alt='${emoji.shortcode}' title='${emoji.shortcode}' class='emoji' />`
     )
   }, string)
@@ -223,6 +232,7 @@ export const parseStatus = (data) => {
       output.statusnet_conversation_id = data.pleroma.conversation_id
       output.is_local = pleroma.local
       output.in_reply_to_screen_name = data.pleroma.in_reply_to_account_acct
+      output.thread_muted = pleroma.thread_muted
     } else {
       output.text = data.content
       output.summary = data.spoiler_text
@@ -240,6 +250,7 @@ export const parseStatus = (data) => {
     output.external_url = data.url
     output.poll = data.poll
     output.pinned = data.pinned
+    output.muted = data.muted
   } else {
     output.favorited = data.favorited
     output.fave_num = data.fave_num
