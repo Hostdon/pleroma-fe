@@ -531,6 +531,8 @@
     "remote_follow": "リモートフォロー",
     "report": "つうほう",
     "statuses": "ステータス",
+    "subscribe": "サブスクライブ",
+    "unsubscribe": "サブスクライブをやめる",
     "unblock": "ブロックをやめる",
     "unblock_progress": "ブロックをとりけしています...",
     "block_progress": "ブロックしています...",
