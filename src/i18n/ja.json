@@ -76,14 +76,9 @@
     "dms": "ダイレクトメッセージ",
     "public_tl": "パブリックタイムライン",
     "timeline": "タイムライン",
-<<<<<<< HEAD
     "twkn": "接続しているすべてのネットワーク",
     "user_search": "ユーザーを探す",
-=======
-    "twkn": "つながっているすべてのネットワーク",
-    "user_search": "ユーザーをさがす",
-    "search": "さがす",
->>>>>>> 051e6ea5ca8be5231d66e577a7e5407b53e08f61
+    "search": "検索",
     "who_to_follow": "おすすめユーザー",
     "preferences": "設定"
   },
@@ -113,15 +108,15 @@
   },
   "emoji": {
     "stickers": "ステッカー",
-    "emoji": "えもじ",
-    "keep_open": "ピッカーをあけたままにする",
-    "search_emoji": "えもじをさがす",
-    "add_emoji": "えもじをうちこむ",
-    "custom": "カスタムえもじ",
-    "unicode": "ユニコードえもじ"
+    "emoji": "絵文字",
+    "keep_open": "ピッカーを開いたままにする",
+    "search_emoji": "絵文字を検索",
+    "add_emoji": "絵文字を挿入",
+    "custom": "カスタム絵文字",
+    "unicode": "Unicode絵文字"
   },
   "stickers": {
-    "add_sticker": "ステッカーをふやす"
+    "add_sticker": "ステッカーを追加"
   },
   "interactions": {
     "favs_repeats": "リピートとお気に入り",
@@ -235,25 +230,15 @@
     "current_password": "現在のパスワード",
     "current_profile_banner": "現在のプロフィールバナー",
     "data_import_export_tab": "インポートとエクスポート",
-<<<<<<< HEAD
     "default_vis": "デフォルトの公開範囲",
     "delete_account": "アカウントを消す",
     "delete_account_description": "あなたのアカウントとメッセージが、消えます。",
     "delete_account_error": "アカウントを消すことが、できなかったかもしれません。インスタンスの管理者に、連絡してください。",
     "delete_account_instructions": "本当にアカウントを消してもいいなら、パスワードを入力してください。",
+    "discoverable": "検索などのサービスでこのアカウントを見つけることを許可する",
     "avatar_size_instruction": "アバターの大きさは、150×150ピクセルか、それよりも大きくするといいです。",
+    "pad_emoji": "ピッカーから絵文字を挿入するとき、絵文字の両側にスペースを入れる",
     "export_theme": "保存",
-=======
-    "default_vis": "デフォルトのこうかいはんい",
-    "delete_account": "アカウントをけす",
-    "delete_account_description": "あなたのアカウントとメッセージが、きえます。",
-    "delete_account_error": "アカウントをけすことが、できなかったかもしれません。インスタンスのアドミニストレーターに、おといあわせください。",
-    "delete_account_instructions": "ほんとうにアカウントをけしてもいいなら、パスワードをかいてください。",
-    "discoverable": "けんさくなどのサービスで、このアカウントをみつけてもよい",
-    "avatar_size_instruction": "アバターのおおきさは、150×150ピクセルか、それよりもおおきくするといいです。",
-    "pad_emoji": "えもじをピッカーでえらんだとき、えもじのまわりにスペースをいれる",
-    "export_theme": "セーブ",
->>>>>>> 051e6ea5ca8be5231d66e577a7e5407b53e08f61
     "filtering": "フィルタリング",
     "filtering_explanation": "これらの言葉を含むすべてのものがミュートされます。1行に1つの言葉を書いてください。",
     "follow_export": "フォローのエクスポート",
@@ -300,27 +285,16 @@
     "notification_visibility_likes": "お気に入り",
     "notification_visibility_mentions": "メンション",
     "notification_visibility_repeats": "リピート",
-<<<<<<< HEAD
     "no_rich_text_description": "リッチテキストを使わない",
     "no_blocks": "ブロックはありません",
     "no_mutes": "ミュートはありません",
     "hide_follows_description": "フォローしている人を見せない",
     "hide_followers_description": "フォロワーを見せない",
+    "hide_follows_count_description": "フォローしている人の数を見せない",
+    "hide_followers_count_description": "フォロワーの数を見せない",
     "show_admin_badge": "管理者のバッジを見せる",
     "show_moderator_badge": "モデレーターのバッジを見せる",
     "nsfw_clickthrough": "NSFWなファイルを隠す",
-=======
-    "no_rich_text_description": "リッチテキストをつかわない",
-    "no_blocks": "ブロックしていません",
-    "no_mutes": "ミュートしていません",
-    "hide_follows_description": "フォローしているひとをみせない",
-    "hide_followers_description": "フォロワーをみせない",
-    "hide_follows_count_description": "フォローしているひとのかずをみせない",
-    "hide_followers_count_description": "フォロワーのかずをみせない",
-    "show_admin_badge": "アドミンのしるしをみせる",
-    "show_moderator_badge": "モデレーターのしるしをみせる",
-    "nsfw_clickthrough": "NSFWなファイルをかくす",
->>>>>>> 051e6ea5ca8be5231d66e577a7e5407b53e08f61
     "oauth_tokens": "OAuthトークン",
     "token": "トークン",
     "refresh_token": "トークンを更新",
@@ -543,25 +517,15 @@
   "status": {
     "favorites": "お気に入り",
     "repeats": "リピート",
-<<<<<<< HEAD
     "delete": "ステータスを削除",
     "pin": "プロフィールにピン留め",
     "unpin": "プロフィールのピン留めを外す",
     "pinned": "ピン留め",
     "delete_confirm": "本当にこのステータスを削除してもよろしいですか？",
     "reply_to": "返信",
-    "replies_list": "返信:"
-=======
-    "delete": "ステータスをけす",
-    "pin": "プロフィールにピンどめする",
-    "unpin": "プロフィールにピンどめするのをやめる",
-    "pinned": "ピンどめ",
-    "delete_confirm": "ほんとうに、このステータスを、けしてもいいですか？",
-    "reply_to": "へんしん:",
-    "replies_list": "へんしん:",
-    "mute_conversation": "スレッドをミュートする",
-    "unmute_conversation": "スレッドをミュートするのをやめる"
->>>>>>> 051e6ea5ca8be5231d66e577a7e5407b53e08f61
+    "replies_list": "返信:",
+    "mute_conversation": "スレッドをミュート",
+    "unmute_conversation": "スレッドのミュートを解除"
   },
   "user_card": {
     "approve": "受け入れ",
@@ -587,9 +551,9 @@
     "remote_follow": "リモートフォロー",
     "report": "通報",
     "statuses": "ステータス",
-    "subscribe": "サブスクライブ",
-    "unsubscribe": "サブスクライブをやめる",
-    "unblock": "ブロックを解除",
+    "subscribe": "購読",
+    "unsubscribe": "購読を解除",
+    "unblock": "ブロック解除",
     "unblock_progress": "ブロックを解除しています...",
     "block_progress": "ブロックしています...",
     "unmute": "ミュート解除",
@@ -655,21 +619,21 @@
     }
   },
   "search": {
-    "people": "ひとびと",
+    "people": "人々",
     "hashtags": "ハッシュタグ",
-    "person_talking": "{count} にんが、はなしています",
-    "people_talking": "{count} にんが、はなしています",
-    "no_results": "みつかりませんでした"
+    "person_talking": "{count} 人が話しています",
+    "people_talking": "{count} 人が話しています",
+    "no_results": "見つかりませんでした"
   },
   "password_reset": {
-    "forgot_password": "パスワードを、わすれましたか？",
+    "forgot_password": "パスワードを忘れましたか？",
     "password_reset": "パスワードリセット",
-    "instruction": "あなたのメールアドレスかユーザーめいをいれてください。パスワードをリセットするためのリンクをおくります。",
-    "placeholder": "あなたのメールアドレスかユーザーめい",
-    "check_email": "パスワードをリセットするためのリンクがかかれたメールが、とどいているかどうか、みてください。",
-    "return_home": "ホームページにもどる",
-    "not_found": "そのメールアドレスまたはユーザーめいを、みつけることができませんでした。",
-    "too_many_requests": "パスワードリセットを、ためすことが、おおすぎます。しばらくしてから、ためしてください。",
-    "password_reset_disabled": "このインスタンスでは、パスワードリセットは、できません。インスタンスのアドミニストレーターに、おといあわせください。"
+    "instruction": "メールアドレスまたはユーザー名を入力してください。パスワードをリセットするためのリンクを送信します。",
+    "placeholder": "メールアドレスまたはユーザー名",
+    "check_email": "パスワードをリセットするためのリンクが記載されたメールが届いているか確認してください。",
+    "return_home": "ホームページに戻る",
+    "not_found": "メールアドレスまたはユーザー名が見つかりませんでした。",
+    "too_many_requests": "試行回数の制限に達しました。しばらく時間を置いてから再試行してください。",
+    "password_reset_disabled": "このインスタンスではパスワードリセットは無効になっています。インスタンスの管理者に連絡してください。"
   }
 }
