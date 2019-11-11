@@ -173,58 +173,6 @@ const getStickers = async ({ store }) => {
   }
 }
 
-const getStaticEmoji = async ({ store }) => {
-  try {
-    const res = await window.fetch('/static/emoji.json')
-    if (res.ok) {
-      const values = await res.json()
-      const emoji = Object.keys(values).map((key) => {
-        return {
-          displayText: key,
-          imageUrl: false,
-          replacement: values[key]
-        }
-      }).sort((a, b) => a.displayText - b.displayText)
-      store.dispatch('setInstanceOption', { name: 'emoji', value: emoji })
-    } else {
-      throw (res)
-    }
-  } catch (e) {
-    console.warn("Can't load static emoji")
-    console.warn(e)
-  }
-}
-
-// This is also used to indicate if we have a 'pleroma backend' or not.
-// Somewhat weird, should probably be somewhere else.
-const getCustomEmoji = async ({ store }) => {
-  try {
-    const res = await window.fetch('/api/pleroma/emoji.json')
-    if (res.ok) {
-      const result = await res.json()
-      const values = Array.isArray(result) ? Object.assign({}, ...result) : result
-      const emoji = Object.entries(values).map(([key, value]) => {
-        const imageUrl = value.image_url
-        return {
-          displayText: key,
-          imageUrl: imageUrl ? store.state.instance.server + imageUrl : value,
-          tags: imageUrl ? value.tags.sort((a, b) => a > b ? 1 : 0) : ['utf'],
-          replacement: `:${key}: `
-        }
-        // Technically could use tags but those are kinda useless right now, should have been "pack" field, that would be more useful
-      }).sort((a, b) => a.displayText.toLowerCase() > b.displayText.toLowerCase() ? 1 : 0)
-      store.dispatch('setInstanceOption', { name: 'customEmoji', value: emoji })
-      store.dispatch('setInstanceOption', { name: 'pleromaBackend', value: true })
-    } else {
-      throw (res)
-    }
-  } catch (e) {
-    store.dispatch('setInstanceOption', { name: 'pleromaBackend', value: false })
-    console.warn("Can't load custom emojis, maybe not a Pleroma instance?")
-    console.warn(e)
-  }
-}
-
 const getAppSecret = async ({ store }) => {
   const { state, commit } = store
   const { oauth, instance } = state
@@ -234,6 +182,15 @@ const getAppSecret = async ({ store }) => {
       commit('setAppToken', token.access_token)
       commit('setBackendInteractor', backendInteractorService(store.getters.getToken()))
     })
+}
+
+const resolveStaffAccounts = async ({ store, accounts }) => {
+  const backendInteractor = store.state.api.backendInteractor
+  let nicknames = accounts.map(uri => uri.split('/').pop())
+    .map(id => backendInteractor.fetchUser({ id }))
+  nicknames = await Promise.all(nicknames)
+
+  store.dispatch('setInstanceOption', { name: 'staffAccounts', value: nicknames })
 }
 
 const getNodeInfo = async ({ store }) => {
@@ -259,10 +216,17 @@ const getNodeInfo = async ({ store }) => {
 
       const software = data.software
       store.dispatch('setInstanceOption', { name: 'backendVersion', value: software.version })
+      store.dispatch('setInstanceOption', { name: 'pleromaBackend', value: software.name === 'pleroma' })
 
       const frontendVersion = window.___pleromafe_commit_hash
       store.dispatch('setInstanceOption', { name: 'frontendVersion', value: frontendVersion })
       store.dispatch('setInstanceOption', { name: 'tagPolicyAvailable', value: metadata.federation.mrf_policies.includes('TagPolicy') })
+
+      const federation = metadata.federation
+      store.dispatch('setInstanceOption', { name: 'federationPolicy', value: federation })
+
+      const accounts = metadata.staffAccounts
+      await resolveStaffAccounts({ store, accounts })
     } else {
       throw (res)
     }
@@ -315,8 +279,6 @@ const afterStoreSetup = async ({ store, i18n }) => {
     getTOS({ store }),
     getInstancePanel({ store }),
     getStickers({ store }),
-    getStaticEmoji({ store }),
-    getCustomEmoji({ store }),
     getNodeInfo({ store })
   ])
 

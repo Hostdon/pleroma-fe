@@ -1,4 +1,23 @@
 {
+  "about": {
+    "staff": "Staff",
+    "federation": "Federation",
+    "mrf_policies": "Enabled MRF Policies",
+    "mrf_policies_desc": "MRF policies manipulate the federation behaviour of the instance.  The following policies are enabled:",
+    "mrf_policy_simple": "Instance-specific Policies",
+    "mrf_policy_simple_accept": "Accept",
+    "mrf_policy_simple_accept_desc": "This instance only accepts messages from the following instances:",
+    "mrf_policy_simple_reject": "Reject",
+    "mrf_policy_simple_reject_desc": "This instance will not accept messages from the following instances:",
+    "mrf_policy_simple_quarantine": "Quarantine",
+    "mrf_policy_simple_quarantine_desc": "This instance will send only public posts to the following instances:",
+    "mrf_policy_simple_ftl_removal": "Removal from \"The Whole Known Network\" Timeline",
+    "mrf_policy_simple_ftl_removal_desc": "This instance removes these instances from \"The Whole Known Network\" timeline:",
+    "mrf_policy_simple_media_removal": "Media Removal",
+    "mrf_policy_simple_media_removal_desc": "This instance removes media from posts on the following instances:",
+    "mrf_policy_simple_media_nsfw": "Media Force-set As Sensitive",
+    "mrf_policy_simple_media_nsfw_desc": "This instance forces media to be set sensitive in posts on the following instances:"
+  },
   "chat": {
     "title": "Chat"
   },
@@ -114,7 +133,9 @@
     "search_emoji": "Search for an emoji",
     "add_emoji": "Insert emoji",
     "custom": "Custom emoji",
-    "unicode": "Unicode emoji"
+    "unicode": "Unicode emoji",
+    "load_all_hint": "Loaded first {saneAmount} emoji, loading all emoji may cause performance issues.",
+    "load_all": "Loading all {emojiAmount} emoji"
   },
   "interactions": {
     "favs_repeats": "Repeats and Favorites",
@@ -170,6 +191,11 @@
       "password_confirmation_match": "should be the same as password"
     }
   },
+  "remote_user_resolver": {
+    "remote_user_resolver": "Remote user resolver",
+    "searching_for": "Searching for",
+    "error": "Not found."
+  },
   "selectable_list": {
     "select_all": "Select all"
   },
@@ -217,6 +243,9 @@
     "cGreen": "Green (Retweet)",
     "cOrange": "Orange (Favorite)",
     "cRed": "Red (Cancel)",
+    "change_email": "Change Email",
+    "change_email_error": "There was an issue changing your email.",
+    "changed_email": "Email changed successfully!",
     "change_password": "Change Password",
     "change_password_error": "There was an issue changing your password.",
     "changed_password": "Password changed successfully!",
@@ -275,6 +304,7 @@
     "use_contain_fit": "Don't crop the attachment in thumbnails",
     "name": "Name",
     "name_bio": "Name & Bio",
+    "new_email": "New Email",
     "new_password": "New password",
     "notification_visibility": "Types of notifications to show",
     "notification_visibility_follows": "Follows",
@@ -387,6 +417,7 @@
         "_tab_label": "Advanced",
         "alert": "Alert background",
         "alert_error": "Error",
+        "alert_warning": "Warning",
         "badge": "Badge background",
         "badge_notification": "Notification",
         "panel_header": "Panel header",
